@@ -1,0 +1,35 @@
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.timer {
+    margin: auto;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: end;
+    gap: 5px;
+}
+
+.timer__display {
+    text-align: center;
+}
+
+.timer__input {
+    text-align: center;
+}
+
+.timer__button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.timer__finished {
+    color: red;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
