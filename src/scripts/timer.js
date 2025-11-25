@@ -1,5 +1,3 @@
-import '../styles/timer.css'
-
 const timer = document.querySelector('.timer__display');
 const input = document.querySelector('.timer__input');
 const start = document.querySelector('.start');

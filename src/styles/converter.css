@@ -1,0 +1,61 @@
+.converter {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.converter__heading {
+    margin: auto;
+}
+
+.converter__wrapper {
+    display: grid;
+    justify-content: center;
+    gap: 5px;
+}
+
+.converter__celsius {
+    position: relative;
+}
+
+.converter__celsius::before {
+    content: '°C';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.converter__fahrenheit {
+    position: relative;
+}
+
+.converter__fahrenheit::before {
+    content: '°F';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.converter-arrows {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+    stroke: rgba(255, 255, 255, 0.87);
+    stroke-width: 2;
+    fill: none;
+    transform: rotate(90deg);
+}
