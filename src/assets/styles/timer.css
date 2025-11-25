@@ -5,9 +5,7 @@
 }
 
 .timer {
-    position: fixed;
-    top: 50%;
-    left: 20%;
+    margin: auto;
     height: 130px;
     display: flex;
     align-items: center;
