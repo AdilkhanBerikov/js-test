@@ -20,23 +20,11 @@
     position: relative;
 }
 
-.converter__celsius::before {
-    content: '°C';
-    position: absolute;
-    top: 0;
-    right: -20px;
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.87);
-}
-
 .converter__fahrenheit {
     position: relative;
 }
 
-.converter__fahrenheit::before {
-    content: '°F';
+.converter__value {
     position: absolute;
     top: 0;
     right: -20px;
@@ -44,6 +32,10 @@
     line-height: 1.5;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.87);
+
+    @media (prefers-color-scheme: light) {
+        color: #1a1a1a;
+    }
 }
 
 .converter-arrows {
@@ -58,4 +50,8 @@
     stroke-width: 2;
     fill: none;
     transform: rotate(90deg);
+
+    @media (prefers-color-scheme: light) {
+        stroke: #1a1a1a;
+    }
 }

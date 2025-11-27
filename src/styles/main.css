@@ -1,3 +1,4 @@
+@import "../../node_modules/reset.css/reset.css";
 @import "../styles/index.css";
 @import "../styles/timer.css";
 @import "../styles/converter.css";

@@ -23,7 +23,7 @@ function startTimer() {
     let seconds = Number(input.value);
 
     if (isNaN(seconds) || seconds < 0) {
-        input.textContent = 'Введите число';
+        alert('Введите положительное число');
         return false;
     }
 
@@ -31,21 +31,20 @@ function startTimer() {
 
     input.disabled = true;
     start.disabled = true;
-    stop.disabled = true;
 
-    timerId = setInterval(() => {
+    function go() {
         seconds--;
-        timer.textContent = seconds;
+        timer.textContent = seconds + 1;
 
         if (seconds <= 0) {
             clearInterval(timerId);
             timerId = null;
             isRunning = false;
             timer.textContent = '0000';
+            input.value = '';
 
             input.disabled = false;
             start.disabled = false;
-            stop.disabled = false;
 
             timer.classList.add('timer__finished');
             document.querySelector('#message').innerHTML = `
@@ -57,12 +56,18 @@ function startTimer() {
                 document.querySelector('#message').innerHTML = '';
             }, 3000)
         }
-    }, 1000)
+    }
+
+    go();
+    timerId = setInterval(go, 1000);
 }
 
 function stopTimer() {
     clearInterval(timerId);
+    input.value = '';
     timerId = null;
     isRunning = false;
     timer.textContent = '0000';
+    input.disabled = false;
+    start.disabled = false;
 }
