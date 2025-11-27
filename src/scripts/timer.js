@@ -36,7 +36,7 @@ function startTimer() {
         seconds--;
         timer.textContent = seconds + 1;
 
-        if (seconds <= 0) {
+        if (seconds < 0) {
             clearInterval(timerId);
             timerId = null;
             isRunning = false;
