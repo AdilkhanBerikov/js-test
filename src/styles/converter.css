@@ -1,0 +1,57 @@
+.converter {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.converter__heading {
+    margin: auto;
+}
+
+.converter__wrapper {
+    display: grid;
+    justify-content: center;
+    gap: 5px;
+}
+
+.converter__celsius {
+    position: relative;
+}
+
+.converter__fahrenheit {
+    position: relative;
+}
+
+.converter__value {
+    position: absolute;
+    top: 0;
+    right: -20px;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.87);
+
+    @media (prefers-color-scheme: light) {
+        color: #1a1a1a;
+    }
+}
+
+.converter-arrows {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+    stroke: rgba(255, 255, 255, 0.87);
+    stroke-width: 2;
+    fill: none;
+    transform: rotate(90deg);
+
+    @media (prefers-color-scheme: light) {
+        stroke: #1a1a1a;
+    }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="../styles/main.css">
+  </head>
+  <body>
+    <div class="converter">
+      <h2 class="converter__heading">Конвертер температуры</h2>
+      <div class="converter__wrapper">
+        <label class="converter__celsius">
+            <input class="celsius__input input" id="celsius" type="number" placeholder="0">
+            <span class="converter__value">°C</span>
+        </label>
+        <div class="converter-arrows">
+            <svg viewBox="0 0 24 24" class="arrow arrow-left">
+              <path d="M7 7h14M7 7l4-4M7 7l4 4"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="arrow arrow-right">
+              <path d="M17 17H3M17 17l-4-4M17 17l-4 4"/>
+            </svg>
+        </div>
+        <label class="converter__fahrenheit">
+            <input class="fahrenheit__input input" id="fahrenheit" type="number" placeholder="0">
+            <span class="converter__value">°F</span>
+        </label>
+      </div>
+      <button class="button converter__clear">Clear</button>
+    </div>
+    <script type="module" src="/src/scripts/converter.js"></script>
+  </body>
+</html>
