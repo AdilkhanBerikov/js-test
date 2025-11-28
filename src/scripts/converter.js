@@ -9,7 +9,7 @@ celsius.addEventListener('input', () => {
 
     isUpdating = true;
 
-    let value = celsius.value;
+    const value = celsius.value;
 
     if (value === '') {
         fahrenheit.value = '';
@@ -17,7 +17,7 @@ celsius.addEventListener('input', () => {
         return;
     }
 
-    let num = Number(value);
+    const num = Number(value);
 
     if (isNaN(num)) {
         isUpdating = false;
@@ -25,7 +25,7 @@ celsius.addEventListener('input', () => {
         return;
     }
 
-    let result = num * 9/5 + 32;
+    const result = num * 9/5 + 32;
 
     fahrenheit.value = result.toFixed(2);
 
@@ -37,7 +37,7 @@ fahrenheit.addEventListener('input', () => {
 
     isUpdating = true;
 
-    let value = fahrenheit.value;
+    const value = fahrenheit.value;
 
     if (value === '') {
         celsius.value = '';
@@ -45,7 +45,7 @@ fahrenheit.addEventListener('input', () => {
         return;
     }
 
-    let num = Number(value);
+    const num = Number(value);
 
     if (isNaN(num)) {
         isUpdating = false;
@@ -53,7 +53,7 @@ fahrenheit.addEventListener('input', () => {
         return;
     }
 
-    let result = (num - 32) * 5/9;
+    const result = (num - 32) * 5/9;
 
     celsius.value = result.toFixed(2);
 
