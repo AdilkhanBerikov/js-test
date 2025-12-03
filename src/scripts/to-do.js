@@ -10,13 +10,12 @@ if (localStorage.getItem('tasks')) {
     console.log(tasks)
 }
 
-function renderTasks() {
-    tasks.forEach(task => {
-        let taskItem = `
+function renderTask(task) {
+    let taskItem = `
         <li class="to-do__item ${task.done ? "done" : ""}" id="${task.id}">
             <div class="to-do__task">
                 <label>
-                    <input class="task__input" type="checkbox">
+                    <input class="task__input" type="checkbox" ${task.done ? "checked" : ""}>
                     <span>${task.text}</span>
                 </label>
                 <div>
@@ -30,11 +29,12 @@ function renderTasks() {
             </div>
         </li>`;
 
-        list.insertAdjacentHTML('beforeend', taskItem);
-    })
+    list.insertAdjacentHTML('beforeend', taskItem);
 }
 
-renderTasks();
+tasks.forEach(task => {
+    renderTask(task);
+})
 
 function addTask(event) {
     event.preventDefault();
@@ -49,68 +49,56 @@ function addTask(event) {
 
     tasks.push(taskInfo);
 
-    let taskItem = `
-        <li class="to-do__item" id="${taskInfo.id}">
-            <div class="to-do__task">
-                <label>
-                    <input class="task__input" type="checkbox">
-                    <span>${taskInfo.text}</span>
-                </label>
-                <div>
-                    <button class="task__done" type="button">
-                        Done
-                    </button>
-                    <button class="task__delete" type="button">
-                        Delete
-                    </button>
-                </div>
-            </div>
-        </li>`;
+    renderTask(taskInfo);
 
-    list.insertAdjacentHTML('beforeend', taskItem);
+    input.value = '';
 
     saveLocalStorage();
 }
 
 function removeTask(event) {
 
-    if (event.target.classList.contains('task__delete')) {
-        const targetItem = event.target.closest('.to-do__item');
+    if (!event.target.classList.contains('task__delete')) return;
 
-        const taskID = Number(targetItem.id);
+    const targetItem = event.target.closest('.to-do__item');
 
-        tasks = tasks.filter(function (task) {
-            if (task.id === taskID) {
-                return false;
-            } else {
-                return true;
-            }
-        })
+    const taskID = Number(targetItem.id);
 
-        targetItem.remove();
-    }
+    tasks = tasks.filter(function (task) {
+        return task.id !== taskID;
+    })
+
+    targetItem.remove();
+
     saveLocalStorage();
 }
 
 function doneTask(event) {
 
-    const taskInput = document.querySelector('.task__input');
+    const isDone = event.target.classList.contains('task__done');
+    const isChecked = event.target.classList.contains('task__input');
 
-    if (event.target.classList.contains('task__done')) {
-        const targetItem = event.target.closest('.to-do__item');
+    if (!isDone && !isChecked) return;
 
-        const taskID = Number(targetItem.id);
+    const targetItem = event.target.closest('.to-do__item');
 
-        const task = tasks.find(function (task) {
-            if (task.id === taskID) {
-                return true;
-            }
-        })
+    const checkBox = targetItem.querySelector('.task__input');
 
-        task.done = !task.done
+    const taskID = Number(targetItem.id);
 
-        targetItem.classList.toggle("done");
-    }
+    const task = tasks.find(function (task) {
+        if (task.id === taskID) {
+            return true;
+        }
+    })
+
+    task.done = !task.done
+
+    checkBox.checked = task.done;
+
+    checkBox.classList.toggle('done', task.done);
+
+    targetItem.classList.toggle("done", task.done);
 
     saveLocalStorage();
 }
