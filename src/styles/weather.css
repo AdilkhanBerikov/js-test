@@ -1,0 +1,7 @@
+.weather {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
