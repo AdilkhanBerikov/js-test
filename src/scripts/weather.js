@@ -1,10 +1,9 @@
 const input = document.querySelector('.weather__input');
-const button = document.querySelector('.weather__button');
-const info = document.querySelector('.widget__info');
+const info = document.querySelector('.weather__info');
 
 const key = '7bc987175809430fa15165132252111';
 
-function deBounce(call, timeOut) {
+function debounce(call, timeOut) {
     let lastCall;
 
     return (...args) => {
@@ -22,12 +21,6 @@ async function getWeather() {
 
         info.innerHTML = `<p>Загрузка...</p>`;
 
-        await function () {
-            setTimeout(() => {
-                info.innerHTML = `<p>Загрузка...</p>`
-            }, 5000);
-        };
-
         const url = `https://api.weatherapi.com/v1/current.json?key=${key}&q=${cityName}`;
 
         const response = await fetch(url, {
@@ -42,8 +35,6 @@ async function getWeather() {
 
         const result = await response.json();
 
-        console.log(result);
-
         info.innerHTML = `
             <p>Город: ${result.location.name}</p>
             <p>Дата: ${result.location.localtime}</p>
@@ -57,6 +48,6 @@ async function getWeather() {
     }
 }
 
-const deBounceWeather = deBounce(getWeather, 500);
+const deBounceWeather = debounce(getWeather, 500);
 
 input.addEventListener('input', deBounceWeather);
