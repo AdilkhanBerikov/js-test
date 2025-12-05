@@ -7,11 +7,10 @@ let tasks = [];
 
 if (localStorage.getItem('tasks')) {
     tasks = JSON.parse(localStorage.getItem('tasks'));
-    console.log(tasks)
 }
 
 function renderTask(task) {
-    let taskItem = `
+    const taskItem = `
         <li class="to-do__item ${task.done ? "done" : ""}" id="${task.id}">
             <div class="to-do__task">
                 <label>
@@ -19,9 +18,6 @@ function renderTask(task) {
                     <span>${task.text}</span>
                 </label>
                 <div>
-                    <button class="task__done" type="button">
-                        Done
-                    </button>
                     <button class="task__delete" type="button">
                         Delete
                     </button>
@@ -73,12 +69,11 @@ function removeTask(event) {
     saveLocalStorage();
 }
 
-function doneTask(event) {
+function toggleTask(event) {
 
-    const isDone = event.target.classList.contains('task__done');
-    const isChecked = event.target.classList.contains('task__input');
+    const isCheckBox = event.target.classList.contains('task__input');
 
-    if (!isDone && !isChecked) return;
+    if (!isCheckBox) return;
 
     const targetItem = event.target.closest('.to-do__item');
 
@@ -92,13 +87,11 @@ function doneTask(event) {
         }
     })
 
-    task.done = !task.done
-
-    checkBox.checked = task.done;
+    task.done = checkBox.checked;
 
     checkBox.classList.toggle('done', task.done);
 
-    targetItem.classList.toggle("done", task.done);
+    targetItem.classList.toggle('done', task.done);
 
     saveLocalStorage();
 }
@@ -109,4 +102,4 @@ function saveLocalStorage() {
 
 form.addEventListener('submit', addTask);
 list.addEventListener('click', removeTask);
-list.addEventListener('click', doneTask);
+list.addEventListener('click', toggleTask);
