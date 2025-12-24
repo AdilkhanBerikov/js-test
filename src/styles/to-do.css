@@ -1,0 +1,29 @@
+.container {
+    margin: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.to-do {
+    display: grid;
+    gap: 15px;
+}
+
+.to-do__task {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.to-do__button {
+    height: 100%;
+}
+
+.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+    transition: opacity 1s ease;
+}
